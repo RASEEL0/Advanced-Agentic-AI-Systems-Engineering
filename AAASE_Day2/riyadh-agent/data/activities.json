@@ -1,0 +1,14 @@
+[
+ {
+  "name":"Boulevard World",
+  "category":"Entertainment",
+  "family":true,
+  "price":100
+ },
+ {
+  "name":"Riyadh Zoo",
+  "category":"Animals",
+  "family":true,
+  "price":50
+ }
+]

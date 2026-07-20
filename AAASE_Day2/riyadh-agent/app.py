@@ -11,3 +11,7 @@ result = app.invoke(
 
 
 print(result["answer"])
+
+print(
+    app.get_graph().draw_ascii()
+)
