@@ -3,7 +3,9 @@ import json
 
 def search_activities(
     category=None,
-    max_price=None
+    audience=None,
+    max_price=None,
+    style=None
 ):
 
     with open(
@@ -25,8 +27,18 @@ def search_activities(
                 continue
 
 
+        if audience:
+            if audience.lower() not in activity["audience"].lower():
+                continue
+
+
         if max_price:
             if activity["price"] > max_price:
+                continue
+
+
+        if style:
+            if style.lower() not in activity["style"].lower():
                 continue
 
 

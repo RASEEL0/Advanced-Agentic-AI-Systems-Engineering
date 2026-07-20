@@ -2,10 +2,11 @@ from tools import search_activities
 
 
 results = search_activities(
-    category="Nature",
-    max_price=50
+    audience="Family",
+    max_price=100,
+    style="Relaxing"
 )
 
 
-for item in results:
-    print(item["name"])
+for activity in results:
+    print(activity["name"])

@@ -10,23 +10,78 @@ llm = ChatOllama(
     temperature=0.7
 )
 
+# Node 1: extract preference from user input
+def preference_node(state: AgentState):
 
-# Node 1: Search our database
+    response = llm.invoke(
+        f"""
+        You are a tourism preference extraction system.
+
+        Extract information from the user request.
+
+        Return ONLY valid JSON.
+
+        Fields:
+
+        {{
+          "category": "type of activity",
+          "audience": "who is going",
+          "budget": number or null,
+          "style": "relaxing/adventure/cultural/etc"
+        }}
+
+        User request:
+        {state['question']}
+        """
+    )
+
+
+    import json
+    import re
+
+
+    json_text = re.search(
+        r"\{.*\}",
+        response.content,
+        re.DOTALL
+    ).group()
+
+
+    preferences = json.loads(json_text)
+
+
+    print("Preferences extracted:")
+    print(preferences)
+
+
+    return {
+        "preferences": preferences
+    }
+# Node 2: Search our database
 
 def research_node(state: AgentState):
 
-    activities = search_activities(
-        category="Nature",
-        max_price=100
-    )
+    preferences = state["preferences"]
 
+
+    activities = search_activities(
+        category=preferences.get("category"),
+        audience=preferences.get("audience"),
+        max_price=preferences.get("budget"),
+         style=preferences.get("style")
+)
+    if not activities:
+        return {
+        "activities": [],
+    }
     return {
         "activities": activities
     }
 
 
 
-# Node 2: Generate recommendation
+
+# Node 3: Generate recommendation
 
 def recommendation_node(state: AgentState):
 
@@ -63,7 +118,10 @@ def recommendation_node(state: AgentState):
 # Create graph
 
 graph = StateGraph(AgentState)
-
+graph.add_node(
+    "preference",
+    preference_node
+)
 
 graph.add_node(
     "research",
@@ -80,9 +138,14 @@ graph.add_node(
 
 graph.add_edge(
     START,
-    "research"
+    "preference"
 )
 
+
+graph.add_edge(
+    "preference",
+    "research"
+)
 
 graph.add_edge(
     "research",
