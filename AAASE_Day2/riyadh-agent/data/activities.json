@@ -1,14 +1,47 @@
 [
- {
-  "name":"Boulevard World",
-  "category":"Entertainment",
-  "family":true,
-  "price":100
- },
- {
-  "name":"Riyadh Zoo",
-  "category":"Animals",
-  "family":true,
-  "price":50
- }
+    {
+        "name": "Boulevard World",
+        "category": "Entertainment",
+        "audience": "Family",
+        "location": "Riyadh",
+        "price": 100,
+        "indoor": false,
+        "description": "A large entertainment destination with international zones, restaurants, and activities."
+    },
+    {
+        "name": "Riyadh Zoo",
+        "category": "Animals",
+        "audience": "Family",
+        "location": "Riyadh",
+        "price": 50,
+        "indoor": false,
+        "description": "A family-friendly zoo with animals, walking areas, and educational experiences."
+    },
+    {
+        "name": "King Abdullah Park",
+        "category": "Nature",
+        "audience": "Family",
+        "location": "Riyadh",
+        "price": 20,
+        "indoor": false,
+        "description": "A large park with gardens, walking paths, and family spaces."
+    },
+    {
+        "name": "National Museum of Saudi Arabia",
+        "category": "Culture",
+        "type": "Educational",
+        "location": "Riyadh",
+        "price": 20,
+        "indoor": true,
+        "description": "A museum showcasing Saudi history and culture."
+    },
+    {
+        "name": "Al Masmak Fortress",
+        "category": "History",
+        "type": "Cultural",
+        "location": "Riyadh",
+        "price": 0,
+        "indoor": false,
+        "description": "A historical fortress representing Saudi heritage."
+    }
 ]
