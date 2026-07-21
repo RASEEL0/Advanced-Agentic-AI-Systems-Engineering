@@ -6,19 +6,27 @@ llm = ChatOllama(
 
 
 def summarization_agent(state):
+    """
+    Summarizes the research findings.
+    """
 
     response = llm.invoke(
         f"""
-Summarize these research notes.
+You are a research summarization agent.
+
+Summarize the following research notes into concise bullet points.
+
+Research Notes:
 
 {state["research_notes"]}
 
-Use bullet points.
+Keep only the most important information.
 """
     )
 
+    print("\n========== SUMMARIZATION AGENT ==========")
+    print(response.content)
+
     return {
-
         "summary": response.content
-
     }

@@ -6,33 +6,38 @@ llm = ChatOllama(
 
 
 def writing_agent(state):
+    """
+    Generates the first report draft.
+    """
 
     response = llm.invoke(
         f"""
-Write a professional report.
+You are a professional report writer.
+
+Write a structured report.
 
 Topic:
 
 {state["topic"]}
 
-Research summary:
+Summary:
 
 {state["summary"]}
 
-Sections:
+Include:
 
-Executive Summary
+# Executive Summary
 
-Research Findings
+# Research Findings
 
-Recommendations
+# Recommendations
 
-Conclusion
+# Conclusion
 """
     )
 
+    print("\n========== WRITING AGENT ==========")
+
     return {
-
         "draft_report": response.content
-
     }

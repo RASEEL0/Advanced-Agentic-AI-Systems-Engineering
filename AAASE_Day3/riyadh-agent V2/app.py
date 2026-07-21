@@ -11,8 +11,10 @@ result = app.invoke(
     }
 )
 
-print("\n========== FINAL STATE ==========")
-print(result)
+print("\n" + "=" * 60)
+print("FINAL REPORT")
+print("=" * 60)
+print(result["final_report"])
 
 # print(
 #     app.get_graph().draw_ascii()

@@ -6,23 +6,33 @@ llm = ChatOllama(
 
 
 def review_agent(state):
+    """
+    Reviews and improves the report.
+    """
 
     response = llm.invoke(
         f"""
+You are a professional editor.
+
 Review the report.
 
-Improve grammar.
+Improve:
 
-Improve readability.
+- Grammar
+- Clarity
+- Professional tone
+- Formatting
 
-Return the improved report.
+Return the improved report only.
+
+Report:
 
 {state["draft_report"]}
 """
     )
 
+    print("\n========== REVIEW AGENT ==========")
+
     return {
-
         "final_report": response.content
-
     }
