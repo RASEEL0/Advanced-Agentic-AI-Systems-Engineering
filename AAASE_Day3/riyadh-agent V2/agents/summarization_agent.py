@@ -1,7 +1,11 @@
 from langchain_ollama import ChatOllama
-
+import os
 llm = ChatOllama(
-    model="qwen2.5:7b"
+    model="qwen2.5:7b",
+    base_url=os.getenv(
+        "OLLAMA_HOST",
+         "http://localhost:11434"
+    )
 )
 
 
