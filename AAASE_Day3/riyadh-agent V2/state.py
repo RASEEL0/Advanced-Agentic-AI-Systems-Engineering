@@ -1,12 +1,9 @@
-from typing import TypedDict, List
+from typing import TypedDict
 
-
-class AgentState(TypedDict):
-
-    question: str
-
-    preferences: dict
-
-    activities: List[dict]
-
-    answer: str
+class ReportState(TypedDict):
+    user_request: str
+    topic: str
+    research_notes: str
+    summary: str
+    draft_report: str
+    final_report: str

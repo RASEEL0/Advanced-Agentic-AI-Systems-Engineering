@@ -1,20 +1,19 @@
 from graph import app
 
-
 result = app.invoke(
     {
-            "question":
-        """
-        I am visiting Riyadh with my two children.
-        I want calm outdoor activities.
-        My budget is 100 SAR.
-        """
+        "user_request": "Generate a report about family entertainment activities in Riyadh.",
+        "topic": "",
+        "research_notes": "",
+        "summary": "",
+        "draft_report": "",
+        "final_report": ""
     }
 )
 
+print("\n========== FINAL STATE ==========")
+print(result)
 
-print(result["answer"])
-
-print(
-    app.get_graph().draw_ascii()
-)
+# print(
+#     app.get_graph().draw_ascii()
+# )
