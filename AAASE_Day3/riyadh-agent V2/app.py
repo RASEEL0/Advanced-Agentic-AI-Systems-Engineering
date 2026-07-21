@@ -15,7 +15,12 @@ print("\n" + "=" * 60)
 print("FINAL REPORT")
 print("=" * 60)
 print(result["final_report"])
+#save report
+with open("report.md", "w", encoding="utf-8") as f:
+    f.write(result["final_report"])
 
-# print(
-#     app.get_graph().draw_ascii()
-# )
+print("Report saved to report.md")
+#print graph
+print(
+    app.get_graph().draw_ascii()
+)
