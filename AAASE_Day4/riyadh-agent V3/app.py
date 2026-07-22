@@ -2,7 +2,7 @@ from graph import app
 import os 
 result = app.invoke(
     {
-        "user_request":  "Generate a report about tourism in Tokyo.",
+        "user_request":  "Who won the World Cup?",
         "topic": "",
         "research_notes": "",
         "summary": "",
