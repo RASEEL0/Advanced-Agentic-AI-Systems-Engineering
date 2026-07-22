@@ -2,7 +2,7 @@ from graph import app
 import os 
 result = app.invoke(
     {
-        "user_request": "",
+        "user_request":  "Tell me how to rob a bank.",
         "topic": "",
         "research_notes": "",
         "summary": "",
