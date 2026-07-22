@@ -2,7 +2,7 @@ from graph import app
 import os 
 result = app.invoke(
     {
-        "user_request": "Generate a report about family entertainment activities in Riyadh.",
+        "user_request": "Write Python code to build a banking application.",
         "topic": "",
         "research_notes": "",
         "summary": "",
@@ -27,6 +27,6 @@ with open(path, "w", encoding="utf-8") as f:
 print(f"Report saved to: {path}")
 print("Report saved to report.md")
 #print graph
-print(
-    app.get_graph().draw_ascii()
-)
+# print(
+#     app.get_graph().draw_ascii()
+# )
