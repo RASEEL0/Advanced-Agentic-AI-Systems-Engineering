@@ -20,7 +20,26 @@ graph.add_node("review", review_agent)
 
 # Connect nodes
 graph.add_edge(START, "manager")
-graph.add_edge("manager", "research")
+# Decide whether to continue or stop.
+def manager_router(state):
+    """
+    Decide whether to continue or stop.
+    """
+
+    if state["topic"] == "REFUSE":
+        return "end"
+
+    return "research"
+
+
+graph.add_conditional_edges(
+    "manager",
+    manager_router,
+    {
+        "research": "research",
+        "end": END,
+    },
+)
 graph.add_edge("research", "summary")
 graph.add_edge("summary", "writer")
 graph.add_edge("writer", "review")
